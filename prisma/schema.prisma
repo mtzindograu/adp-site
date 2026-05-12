@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Player {
+  id        String   @id @default(cuid())
+  name      String
+  position  String
+  number    Int
+  photo     String   @default("")
+  sport     String   @default("football")
+  team      String   @default("professional")
+  goals     Int      @default(0)
+  assists   Int      @default(0)
+  matches   Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Match {
+  id          String   @id @default(cuid())
+  homeTeam    String   @default("ADP")
+  opponent    String
+  date        DateTime
+  time        String   @default("16:00")
+  competition String
+  venue       String   @default("Casa")
+  sport       String   @default("football")
+  team        String   @default("professional")
+  homeScore   Int?
+  awayScore   Int?
+  status      String   @default("upcoming")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model News {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  image       String   @default("")
+  category    String   @default("Geral")
+  sport       String   @default("general")
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

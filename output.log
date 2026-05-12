@@ -1,0 +1,7 @@
+▲ Next.js 16.2.3 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://26.102.131.54:3000
+- Environments: .env
+✓ Ready in 641ms
+  Skipping creating a lockfile at C:\Users\Mateus\Downloads\ADP-Site\.next\dev\lock because we're using WASM bindings
+[?25h
