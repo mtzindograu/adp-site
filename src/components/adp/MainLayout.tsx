@@ -5,15 +5,16 @@ import Navbar from '@/components/adp/Navbar';
 import Footer from '@/components/adp/Footer';
 import AdminPanel from '@/components/admin/AdminPanel';
 import { Shield } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const [adminOpen, setAdminOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleHash = () => {
-      if (window.location.hash === '#admin') {
+      if (window.location.hash === '#admin' || pathname === '/admin') {
         setAdminOpen(true);
       }
     };
@@ -21,12 +22,15 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     handleHash();
     window.addEventListener('hashchange', handleHash);
     return () => window.removeEventListener('hashchange', handleHash);
-  }, []);
+  }, [pathname]);
 
   const closeAdmin = () => {
     setAdminOpen(false);
     if (window.location.hash === '#admin') {
       history.replaceState(null, '', window.location.pathname);
+    }
+    if (pathname === '/admin') {
+      router.push('/');
     }
   };
 
