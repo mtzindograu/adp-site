@@ -88,4 +88,4 @@ Para gerenciar o conteúdo do site:
 3.  **Senha:** `adp2026`
 
 ---
-*Desenvolvido para a Associação Desportiva do Piquiri — 2026.* adp2026@gmial
+*Desenvolvido para a Associação Desportiva do Piquiri — 2026.* adp2026%100
